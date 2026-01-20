@@ -26,7 +26,7 @@ For more information, reach out via:
     </a>
      <a href="https://x.com/solzen33" target="_blank"><img alt="Twitter"
         src="https://img.shields.io/badge/Twitter-000000?style=for-the-badge&logo=x&logoColor=white"/></a>
-<a href="https://t.me/froganbee_sol" target="_blank"><img alt="Telegram"
+<a href="https://t.me/solzen33" target="_blank"><img alt="Telegram"
         src="https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white"/></a>
 </p>
 
