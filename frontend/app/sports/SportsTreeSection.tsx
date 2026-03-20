@@ -52,16 +52,16 @@ export function SportsTreeSection() {
   if (loading) {
     return (
       <section>
-        <h2 className="mb-2 text-sm font-medium text-slate-300">By type (with live slugs)</h2>
-        <p className="text-xs text-slate-500">Loading tree…</p>
+        <h2 className="mb-2 text-sm font-medium text-foreground/80">By type (with live slugs)</h2>
+        <p className="text-xs text-foreground/60">Loading tree…</p>
       </section>
     );
   }
   if (error || groups.length === 0) {
     return (
       <section>
-        <h2 className="mb-2 text-sm font-medium text-slate-300">By type (with live slugs)</h2>
-        <p className="text-xs text-slate-500">
+        <h2 className="mb-2 text-sm font-medium text-foreground/80">By type (with live slugs)</h2>
+        <p className="text-xs text-foreground/60">
           {error
             ? `Tree unavailable: ${error}. Start the API server from repo root: npm run api (runs on port 4004).`
             : "Start the API server from repo root: npm run api (port 4004) to see the tree."}
@@ -71,8 +71,8 @@ export function SportsTreeSection() {
   }
   return (
     <section>
-      <h2 className="mb-2 text-sm font-medium text-slate-300">By type (with live slugs)</h2>
-      <p className="mb-3 text-xs text-slate-400">Expand a type to see tags and live markets.</p>
+      <h2 className="mb-2 text-sm font-medium text-foreground/80">By type (with live slugs)</h2>
+      <p className="mb-3 text-xs text-foreground/70">Expand a type to see tags and live markets.</p>
       <SportsTree groups={groups} />
     </section>
   );

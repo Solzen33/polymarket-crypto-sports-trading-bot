@@ -16,7 +16,7 @@ function formatTs(ts: number): string {
 export function MarketChart({ details, histories }: Props) {
   const tokens = details.tokens ?? [];
   if (tokens.length === 0) {
-    return <p className="text-xs text-slate-400">No tokens for this market.</p>;
+    return <p className="text-xs text-foreground/70">No tokens for this market.</p>;
   }
 
   const tokenIds = tokens.map((t) => t.token_id);
@@ -37,7 +37,7 @@ export function MarketChart({ details, histories }: Props) {
   });
 
   if (data.length === 0) {
-    return <p className="text-xs text-slate-400">No price history available.</p>;
+    return <p className="text-xs text-foreground/70">No price history available.</p>;
   }
 
   const colors = ["#22c55e", "#38bdf8", "#f97316", "#e11d48"];

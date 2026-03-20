@@ -7,10 +7,14 @@
 }
 
 body {
-  @apply bg-background text-slate-100 antialiased;
+  @apply bg-background bg-hero-grid bg-casino-lights bg-fixed text-foreground antialiased;
 }
 
 a {
   @apply text-accent hover:text-accent-soft;
+}
+
+::selection {
+  @apply bg-accent/35 text-background;
 }
 

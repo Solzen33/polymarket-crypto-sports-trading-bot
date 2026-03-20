@@ -38,16 +38,16 @@ function Card({ slug, question }: LiveMarketOption) {
   return (
     <Link
       href={`/markets/${encodeURIComponent(slug)}`}
-      className="block rounded-lg border border-slate-800 bg-surface/80 p-4 transition hover:border-accent/50 hover:bg-surface"
+      className="block rounded-2xl border border-white/10 bg-surfaceAlt/70 p-4 transition hover:border-accent/60 hover:bg-surfaceAlt"
     >
-      <p className="line-clamp-2 text-sm font-medium text-slate-200">
+      <p className="line-clamp-2 text-sm font-medium text-foreground/90">
         {question || slug}
       </p>
-      <p className="mt-1 truncate text-xs text-slate-500 font-mono">{slug}</p>
+      <p className="mt-1 truncate text-xs text-foreground/60 font-mono">{slug}</p>
       {loading ? (
-        <p className="mt-2 text-xs text-slate-500">Loading…</p>
+        <p className="mt-2 text-xs text-foreground/60">Loading…</p>
       ) : (
-        <p className="mt-2 text-xs text-slate-400">Outcome: {mid}</p>
+        <p className="mt-2 text-xs text-foreground/70">Outcome: {mid}</p>
       )}
     </Link>
   );

@@ -8,7 +8,7 @@ export function BackLink() {
     <button
       type="button"
       onClick={() => router.back()}
-      className="rounded px-2 py-1 text-xs text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+      className="rounded-lg border border-white/10 bg-surfaceAlt/50 px-2 py-1 text-xs text-foreground/70 hover:bg-surfaceAlt hover:text-foreground/90"
       aria-label="Back to previous page"
     >
       ← Back

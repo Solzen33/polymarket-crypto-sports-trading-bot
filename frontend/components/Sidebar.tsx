@@ -16,10 +16,10 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-56 shrink-0 flex-col border-r border-slate-800 bg-surface/60 overflow-y-auto">
-      <Link href="/" className="flex items-center gap-2 border-b border-slate-800 px-4 py-3">
+    <aside className="flex w-60 shrink-0 flex-col overflow-y-auto border-r border-accent/20 bg-surface/80 backdrop-blur-sm">
+      <Link href="/" className="flex items-center gap-2 border-b border-accent/20 px-4 py-4">
         <Icon icon="mdi:chart-line" className="h-5 w-5 text-accent" />
-        <span className="text-xs font-semibold text-slate-200">Dashboard</span>
+        <span className="text-sm font-semibold tracking-wide text-foreground">Dashboard</span>
       </Link>
       <nav className="flex min-h-0 flex-1 flex-col gap-0.5 overflow-y-auto p-2">
         {nav.map(({ href, label, icon }) => {
@@ -32,8 +32,8 @@ export function Sidebar() {
               href={href}
               className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition ${
                 active
-                  ? "bg-accent/20 text-accent"
-                  : "text-slate-300 hover:bg-slate-800/80 hover:text-white"
+                  ? "bg-accent/20 text-accent shadow-neon"
+                  : "text-foreground/80 hover:bg-surfaceAlt hover:text-foreground"
               }`}
             >
               <Icon icon={icon} className="h-4 w-4" />

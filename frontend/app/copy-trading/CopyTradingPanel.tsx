@@ -165,10 +165,10 @@ export function CopyTradingPanel({ initialTraders }: Props) {
 
   return (
     <div className="space-y-6">
-      <section className="rounded-lg border border-slate-800 bg-surface/80 p-4">
-        <h2 className="text-sm font-semibold text-slate-200">1. Select traders (from top trader list)</h2>
-        <p className="mt-1 text-xs text-slate-500">Click to toggle. Copy these traders’ buy/sell.</p>
-        <div className="mt-2 max-h-48 overflow-y-auto rounded border border-slate-800 p-2">
+      <section className="rounded-2xl border border-white/10 bg-surfaceAlt/70 p-4">
+        <h2 className="text-sm font-semibold text-foreground">1. Select traders (from top trader list)</h2>
+        <p className="mt-1 text-xs text-foreground/70">Click to toggle. Copy these traders’ buy/sell.</p>
+        <div className="mt-2 max-h-48 overflow-y-auto rounded-xl border border-white/10 bg-surface/60 p-2">
           <div className="flex flex-col gap-1">
             {initialTraders.map((t, i) => {
               const rank = i + 1;
@@ -179,21 +179,23 @@ export function CopyTradingPanel({ initialTraders }: Props) {
                   key={t.proxyWallet}
                   type="button"
                   onClick={() => toggleTrader(t.proxyWallet)}
-                  className={`w-full rounded px-2 py-1.5 text-left text-xs ${on ? "bg-accent/30 text-accent" : "text-slate-400 hover:bg-slate-800"}`}
+                  className={`w-full rounded-xl px-2 py-1.5 text-left text-xs ${
+                    on ? "bg-accent/30 text-accent shadow-glow" : "text-foreground/70 hover:bg-surfaceAlt"
+                  }`}
                   title={t.proxyWallet}
                 >
-                  <span className="text-slate-500">{rank}.</span> {name}
+                  <span className="text-foreground/60">{rank}.</span> {name}
                 </button>
               );
             })}
           </div>
         </div>
-        <p className="mt-2 text-xs text-slate-500">Selected: {selectedWallets.size} trader(s)</p>
+        <p className="mt-2 text-xs text-foreground/70">Selected: {selectedWallets.size} trader(s)</p>
       </section>
 
-      <section className="rounded-lg border border-slate-800 bg-surface/80 p-4">
-        <h2 className="text-sm font-semibold text-slate-200">2. Select live slugs</h2>
-        <p className="mt-1 text-xs text-slate-500">
+      <section className="rounded-2xl border border-white/10 bg-surfaceAlt/70 p-4">
+        <h2 className="text-sm font-semibold text-foreground">2. Select live slugs</h2>
+        <p className="mt-1 text-xs text-foreground/70">
           Load slugs from selected traders’ recent activity, then add to your list below.
         </p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
@@ -220,24 +222,24 @@ export function CopyTradingPanel({ initialTraders }: Props) {
               <button
                 type="button"
                 onClick={addAllOptionSlugs}
-                className="rounded border border-slate-600 px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-800"
+                className="rounded-xl border border-white/10 px-3 py-1.5 text-xs text-foreground/80 hover:bg-surfaceAlt"
               >
                 Add all
               </button>
             </div>
-            <div className="max-h-32 overflow-y-auto rounded border border-slate-800 p-2">
+            <div className="max-h-32 overflow-y-auto rounded-xl border border-white/10 bg-surface/60 p-2">
               {liveSlugOptions.map((m) => {
                 const checked = selectedOptionSlugs.has(m.slug);
                 return (
                   <label
                     key={m.slug}
-                    className="mb-1 flex cursor-pointer items-center gap-2 rounded px-2 py-1 text-left text-xs text-slate-300 hover:bg-slate-800"
+                    className="mb-1 flex cursor-pointer items-center gap-2 rounded-xl px-2 py-1 text-left text-xs text-foreground/80 hover:bg-surfaceAlt"
                   >
                     <input
                       type="checkbox"
                       checked={checked}
                       onChange={() => toggleOptionSlug(m.slug)}
-                      className="rounded border-slate-600"
+                      className="rounded border-white/10"
                     />
                     <span className="flex-1 truncate" title={m.question}>
                       {m.question.slice(0, 50)}...
@@ -252,10 +254,14 @@ export function CopyTradingPanel({ initialTraders }: Props) {
           {slugs.map((s) => (
             <li
               key={s}
-              className="flex items-center gap-1 rounded bg-slate-800 px-2 py-1 text-xs text-slate-300"
+              className="flex items-center gap-1 rounded-xl bg-surface/60 px-2 py-1 text-xs text-foreground/80"
             >
               <span className="max-w-[120px] truncate">{s}</span>
-              <button type="button" onClick={() => removeSlug(s)} className="text-slate-500 hover:text-red-400">
+              <button
+                type="button"
+                onClick={() => removeSlug(s)}
+                className="text-foreground/60 hover:text-danger"
+              >
                 ×
               </button>
             </li>
@@ -263,32 +269,32 @@ export function CopyTradingPanel({ initialTraders }: Props) {
         </ul>
       </section>
 
-      <section className="rounded-lg border border-slate-800 bg-surface/80 p-4">
-        <h2 className="text-sm font-semibold text-slate-200">3. Bot control</h2>
-        <p className="mt-1 text-xs text-slate-500">
-          Choose simulation (no real orders) or real, then start the copy bot. Requires API server (<code className="rounded bg-slate-800 px-1">npm run api</code>).
+      <section className="rounded-2xl border border-white/10 bg-surfaceAlt/70 p-4">
+        <h2 className="text-sm font-semibold text-foreground">3. Bot control</h2>
+        <p className="mt-1 text-xs text-foreground/70">
+          Choose simulation (no real orders) or real, then start the copy bot. Requires API server (<code className="rounded bg-surface/60 px-1">npm run api</code>).
         </p>
         <div className="mt-2 flex flex-wrap items-center gap-4">
           <fieldset className="flex items-center gap-3">
             <legend className="sr-only">Mode</legend>
-            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-slate-300">
+            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-foreground/80">
               <input
                 type="radio"
                 name="botMode"
                 checked={botMode === "simulation"}
                 onChange={() => setBotMode("simulation")}
-                className="rounded-full border-slate-600"
+                className="rounded-full border-white/10"
                 disabled={botRunning}
               />
               Simulation
             </label>
-            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-slate-300">
+            <label className="flex cursor-pointer items-center gap-1.5 text-xs text-foreground/80">
               <input
                 type="radio"
                 name="botMode"
                 checked={botMode === "real"}
                 onChange={() => setBotMode("real")}
-                className="rounded-full border-slate-600"
+                className="rounded-full border-white/10"
                 disabled={botRunning}
               />
               Real
@@ -317,7 +323,7 @@ export function CopyTradingPanel({ initialTraders }: Props) {
                   setStartingOrStopping(false);
                 }
               }}
-              className="rounded bg-emerald-600/80 px-3 py-1.5 text-xs text-white hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-xl bg-success/80 px-3 py-1.5 text-xs text-white hover:bg-success disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {mounted && startingOrStopping ? "Starting..." : "Start bot"}
             </button>
@@ -335,30 +341,30 @@ export function CopyTradingPanel({ initialTraders }: Props) {
                   setStartingOrStopping(false);
                 }
               }}
-              className="rounded bg-red-900/80 px-3 py-1.5 text-xs text-white hover:bg-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-xl bg-danger/70 px-3 py-1.5 text-xs text-white hover:bg-danger disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Stop bot
             </button>
           </div>
         </div>
         {botRunning && (
-          <p className="mt-2 text-xs text-slate-400">
+          <p className="mt-2 text-xs text-foreground/70">
             Running ({botSimulation === false ? "live" : "simulation"}).
           </p>
         )}
       </section>
 
-      <section className="rounded-lg border border-slate-800 bg-surface/80 p-4">
-        <h2 className="text-sm font-semibold text-slate-200">4. Trading log</h2>
-        <p className="mt-1 text-xs text-slate-500">
-          Live activity from the copy-trading bot. Run <code className="rounded bg-slate-800 px-1">npm run copy-trading</code> to see entries.
+      <section className="rounded-2xl border border-white/10 bg-surfaceAlt/70 p-4">
+        <h2 className="text-sm font-semibold text-foreground">4. Trading log</h2>
+        <p className="mt-1 text-xs text-foreground/70">
+          Live activity from the copy-trading bot. Run <code className="rounded bg-surface/60 px-1">npm run copy-trading</code> to see entries.
         </p>
         <div
           ref={logContainerRef}
-          className="mt-2 max-h-64 overflow-y-auto rounded border border-slate-800 bg-slate-950/90 p-2 font-mono text-xs"
+          className="mt-2 max-h-64 overflow-y-auto rounded-xl border border-white/10 bg-surface/40 p-2 font-mono text-xs"
         >
           {logLines.length === 0 ? (
-            <p className="text-slate-500">No log yet. Start the copy-trading bot to see activity here.</p>
+            <p className="text-foreground/60">No log yet. Start the copy-trading bot to see activity here.</p>
           ) : (
             <ul className="space-y-0.5">
               {logLines.map((line, i) => {
@@ -370,9 +376,17 @@ export function CopyTradingPanel({ initialTraders }: Props) {
                 return (
                   <li
                     key={`${i}-${line.slice(0, 40)}`}
-                    className={`flex gap-2 ${isError ? "text-red-400" : isSuccess ? "text-emerald-400" : isCopy || isSim ? "text-slate-200" : "text-slate-400"}`}
+                    className={`flex gap-2 ${
+                      isError
+                        ? "text-danger"
+                        : isSuccess
+                          ? "text-success"
+                          : isCopy || isSim
+                            ? "text-foreground/90"
+                            : "text-foreground/70"
+                    }`}
                   >
-                    {time && <span className="shrink-0 text-slate-500">{time}</span>}
+                    {time && <span className="shrink-0 text-foreground/60">{time}</span>}
                     <span className="min-w-0 break-words">{msg}</span>
                   </li>
                 );
@@ -382,12 +396,12 @@ export function CopyTradingPanel({ initialTraders }: Props) {
         </div>
       </section>
 
-      <section className="rounded-lg border border-slate-800 bg-surface/80 p-4">
-        <h2 className="text-sm font-semibold text-slate-200">5. Manual buy/sell</h2>
-        <p className="mt-1 text-xs text-slate-500">Select slug and amount. Requires CLI for real orders.</p>
+      <section className="rounded-2xl border border-white/10 bg-surfaceAlt/70 p-4">
+        <h2 className="text-sm font-semibold text-foreground">5. Manual buy/sell</h2>
+        <p className="mt-1 text-xs text-foreground/70">Select slug and amount. Requires CLI for real orders.</p>
         <div className="mt-2 flex flex-wrap items-center gap-2">
           <select
-            className="rounded border border-slate-700 bg-slate-900/80 px-2 py-1.5 text-xs text-slate-200"
+            className="rounded-xl border border-white/10 bg-surface/50 px-2 py-1.5 text-xs text-foreground/90"
             defaultValue=""
           >
             <option value="">Select slug</option>
@@ -400,12 +414,18 @@ export function CopyTradingPanel({ initialTraders }: Props) {
           <input
             type="number"
             placeholder="USD"
-            className="w-20 rounded border border-slate-700 bg-slate-900/80 px-2 py-1.5 text-xs text-slate-200"
+            className="w-20 rounded-xl border border-white/10 bg-surface/50 px-2 py-1.5 text-xs text-foreground/90"
           />
-          <button type="button" className="rounded bg-emerald-600/60 px-3 py-1.5 text-xs text-white hover:bg-emerald-600">
+          <button
+            type="button"
+            className="rounded-xl bg-success/60 px-3 py-1.5 text-xs text-white hover:bg-success"
+          >
             Buy
           </button>
-          <button type="button" className="rounded bg-red-900/60 px-3 py-1.5 text-xs text-white hover:bg-red-900">
+          <button
+            type="button"
+            className="rounded-xl bg-danger/50 px-3 py-1.5 text-xs text-white hover:bg-danger"
+          >
             Sell
           </button>
         </div>

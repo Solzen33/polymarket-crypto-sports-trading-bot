@@ -10,14 +10,14 @@ export default async function TradersPage() {
     <div className="space-y-4">
       <div>
         <h1 className="text-lg font-semibold text-white">SPORTS top traders</h1>
-        <p className="mt-1 text-xs text-slate-400">
+        <p className="mt-1 text-xs text-foreground/70">
           Daily SPORTS leaderboard by PnL (top 50). Click a trader to view a chart of their recent
           closed positions.
         </p>
       </div>
 
-      <div className="overflow-hidden rounded-lg border border-slate-800 bg-surface/70">
-        <table className="min-w-full text-left text-xs text-slate-300">
+      <div className="overflow-hidden rounded-2xl border border-white/10 bg-surfaceAlt/70">
+        <table className="min-w-full text-left text-xs text-foreground/80">
           <thead className="bg-surface">
             <tr>
               <th className="px-3 py-2">Rank</th>
@@ -30,8 +30,8 @@ export default async function TradersPage() {
             {traders.map((t) => {
               const name = (t.userName || "").trim() || t.proxyWallet.slice(0, 10) + "…";
               return (
-                <tr key={t.proxyWallet} className="border-t border-slate-800/70 hover:bg-surface/80">
-                  <td className="px-3 py-2 text-slate-400">{t.rank}</td>
+                <tr key={t.proxyWallet} className="border-t border-white/10 hover:bg-surfaceAlt/70">
+                  <td className="px-3 py-2 text-foreground/70">{t.rank}</td>
                   <td className="px-3 py-2">
                     <Link
                       href={`/traders/${t.proxyWallet}`}
@@ -40,7 +40,7 @@ export default async function TradersPage() {
                       {name}
                     </Link>
                   </td>
-                  <td className="px-3 py-2 text-right text-emerald-400">
+                  <td className="px-3 py-2 text-right text-success">
                     {t.pnl.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                   </td>
                   <td className="px-3 py-2 text-right">

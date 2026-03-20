@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3004",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port 3004",
     "lint": "next lint"
   },
   "dependencies": {
     "@iconify/react": "^4.1.1",
-    "jonas-prettier-logger": "^2.0.1",
     "next": "14.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",

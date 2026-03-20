@@ -49,12 +49,12 @@ export function SidebarSportsTree() {
 
   if (loading) {
     return (
-      <div className="px-3 py-2 text-xs text-slate-500">Loading tree…</div>
+      <div className="px-3 py-2 text-xs text-foreground/60">Loading tree…</div>
     );
   }
   if (error || groups.length === 0) {
     return (
-      <div className="px-3 py-2 text-xs text-slate-500">
+      <div className="px-3 py-2 text-xs text-foreground/60">
         Tree unavailable. Run API (port 4004).
       </div>
     );
@@ -88,34 +88,34 @@ function SidebarTreeGroup({
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-left text-xs font-semibold text-slate-200 hover:bg-slate-800/80 hover:text-white"
+        className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-left text-xs font-semibold text-foreground hover:bg-surfaceAlt hover:text-foreground"
         aria-expanded={open}
       >
         <Icon
           icon={open ? "mdi:chevron-down" : "mdi:chevron-right"}
-          className="h-3.5 w-3.5 shrink-0 text-slate-500"
+          className="h-3.5 w-3.5 shrink-0 text-foreground/60"
         />
         <span className="truncate">{typeLabel}</span>
-        <span className="ml-auto shrink-0 text-slate-500">({tags.length})</span>
+        <span className="ml-auto shrink-0 text-foreground/60">({tags.length})</span>
       </button>
       {open && (
-        <ul className="flex flex-col gap-0.5 border-l border-slate-700/80 ml-2 pl-2">
+        <ul className="ml-2 flex flex-col gap-0.5 border-l border-white/10 pl-2">
           {hasTags ? (
             tags.map((t) => (
               <li key={t.tagId}>
                 <Link
                   href={`/sports/${encodeURIComponent(t.tagId)}`}
-                  className="block truncate rounded px-1.5 py-1 text-xs text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"
+                  className="block truncate rounded px-1.5 py-1 text-xs text-foreground/60 hover:bg-surfaceAlt hover:text-foreground"
                 >
                   {t.label}
                   {t.liveSlugs.length > 0 && (
-                    <span className="ml-1 text-slate-600">· {t.liveSlugs.length}</span>
+                    <span className="ml-1 text-foreground/60">· {t.liveSlugs.length}</span>
                   )}
                 </Link>
               </li>
             ))
           ) : (
-            <li className="px-1.5 py-1 text-xs text-slate-500">No tags</li>
+            <li className="px-1.5 py-1 text-xs text-foreground/60">No tags</li>
           )}
         </ul>
       )}

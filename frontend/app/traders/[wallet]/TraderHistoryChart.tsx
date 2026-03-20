@@ -25,7 +25,7 @@ export function TraderHistoryChart({ positions }: Props) {
   });
 
   if (data.length === 0) {
-    return <p className="text-xs text-slate-400">No closed positions in this window.</p>;
+    return <p className="text-xs text-foreground/70">No closed positions in this window.</p>;
   }
 
   return (

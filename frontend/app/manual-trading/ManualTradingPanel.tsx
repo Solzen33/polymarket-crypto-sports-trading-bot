@@ -48,14 +48,14 @@ export function ManualTradingPanel() {
   };
 
   return (
-    <div className="space-y-6 rounded-lg border border-slate-800 bg-surface/80 p-4">
+    <div className="space-y-6 rounded-2xl border border-white/10 bg-surfaceAlt/70 p-4">
       <section>
-        <h2 className="text-sm font-semibold text-slate-200">1. Enter or select live slug</h2>
+        <h2 className="text-sm font-semibold text-foreground">1. Enter or select live slug</h2>
         <div className="mt-2 flex gap-2">
           <input
             type="text"
             placeholder="e.g. will-the-oklahoma-city-thunder-win-the-2026-nba-finals"
-            className="flex-1 rounded border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-200 placeholder-slate-500"
+            className="flex-1 rounded-xl border border-white/10 bg-surface/50 px-3 py-2 text-sm text-foreground/90 placeholder:text-foreground/50"
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && loadMarket()}
@@ -64,12 +64,12 @@ export function ManualTradingPanel() {
             type="button"
             onClick={loadMarket}
             disabled={loading}
-            className="rounded bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-soft disabled:opacity-50"
+            className="rounded-xl bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-soft disabled:opacity-50 shadow-glow"
           >
             {loading ? "Loading…" : "Load market"}
           </button>
         </div>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-foreground/70">
           Use <Link href="/sports" className="text-accent hover:underline">Sports</Link> to find live slugs.
         </p>
       </section>
@@ -77,17 +77,17 @@ export function ManualTradingPanel() {
       {market && (
         <>
           <section>
-            <h2 className="text-sm font-semibold text-slate-200">2. Market</h2>
-            <p className="mt-1 text-sm text-slate-300">{market.question ?? slug}</p>
+              <h2 className="text-sm font-semibold text-foreground">2. Market</h2>
+              <p className="mt-1 text-sm text-foreground/85">{market.question ?? slug}</p>
           </section>
 
           <section>
-            <h2 className="text-sm font-semibold text-slate-200">3. Select outcome & amount</h2>
+              <h2 className="text-sm font-semibold text-foreground">3. Select outcome & amount</h2>
             <div className="mt-2 flex flex-wrap gap-4">
               <div>
-                <label className="block text-xs text-slate-400">Outcome (token)</label>
+                  <label className="block text-xs text-foreground/70">Outcome (token)</label>
                 <select
-                  className="mt-0.5 rounded border border-slate-700 bg-slate-900/80 px-2 py-1.5 text-sm text-slate-200"
+                    className="mt-0.5 rounded-xl border border-white/10 bg-surface/50 px-2 py-1.5 text-sm text-foreground/90"
                   value={selectedTokenId}
                   onChange={(e) => setSelectedTokenId(e.target.value)}
                 >
@@ -99,12 +99,12 @@ export function ManualTradingPanel() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs text-slate-400">Amount (USD)</label>
+                  <label className="block text-xs text-foreground/70">Amount (USD)</label>
                 <input
                   type="number"
                   min={0.1}
                   step={0.5}
-                  className="mt-0.5 w-24 rounded border border-slate-700 bg-slate-900/80 px-2 py-1.5 text-sm text-slate-200"
+                    className="mt-0.5 w-24 rounded-xl border border-white/10 bg-surface/50 px-2 py-1.5 text-sm text-foreground/90"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                 />
@@ -113,25 +113,25 @@ export function ManualTradingPanel() {
           </section>
 
           <section>
-            <h2 className="text-sm font-semibold text-slate-200">4. Place order</h2>
+              <h2 className="text-sm font-semibold text-foreground">4. Place order</h2>
             <div className="mt-2 flex gap-2">
               <button
                 type="button"
                 onClick={() => placeOrder("BUY")}
-                className="rounded bg-emerald-800 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700"
+                  className="rounded-xl bg-success/75 px-4 py-2 text-sm font-medium text-white hover:bg-success"
               >
                 Buy
               </button>
               <button
                 type="button"
                 onClick={() => placeOrder("SELL")}
-                className="rounded bg-rose-800 px-4 py-2 text-sm font-medium text-white hover:bg-rose-700"
+                  className="rounded-xl bg-danger/65 px-4 py-2 text-sm font-medium text-white hover:bg-danger"
               >
                 Sell
               </button>
             </div>
-            <p className="mt-2 text-xs text-slate-500">
-              For live orders, run the CLI: <code className="rounded bg-slate-800 px-1">npm run manual-trading:live -- {slug.slice(0, 30)}…</code>
+              <p className="mt-2 text-xs text-foreground/70">
+                For live orders, run the CLI: <code className="rounded bg-surface/60 px-1">npm run manual-trading:live -- {slug.slice(0, 30)}…</code>
             </p>
           </section>
         </>
